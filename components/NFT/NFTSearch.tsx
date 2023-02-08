@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { HeadingXL } from '../typography/Typography'
-import { googleFont } from '../../theme/globalStyles'
 import { ethers } from 'ethers'
 import { useRouter } from 'next/navigation'
 
@@ -39,6 +38,7 @@ const InputWrapper = styled.div`
 `
 
 const StyledButton = styled.button`
+  font-family: inherit;
   margin-top: 40px;
   background-color: ${({ theme }) => theme.colors.dark300};
   border: 0;
@@ -91,7 +91,6 @@ const NFTSearch = () => {
       <InputWrapper>
         <HeadingXL>Check NFTs portfolio</HeadingXL>
         <StyledInput
-          style={googleFont.style}
           value={address}
           onChange={onChangeHandler}
           placeholder="Write Ethereum address"
@@ -100,7 +99,6 @@ const NFTSearch = () => {
         <StyledButton
           onClick={() => handleSubmit()}
           className={active ? 'active' : 'disactive'}
-          style={googleFont.style}
         >
           Search
         </StyledButton>

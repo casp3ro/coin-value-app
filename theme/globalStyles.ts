@@ -1,7 +1,4 @@
-import { Kumbh_Sans } from '@next/font/google'
 import { createGlobalStyle } from 'styled-components'
-
-export const googleFont = Kumbh_Sans({ subsets: ['latin-ext'] })
 
 export const GlobalStyle = createGlobalStyle`
 
