@@ -1,5 +1,6 @@
-import React from 'react'
 import CryptocurrencyCard from '../../components/CryptocurrencyCard/CryptocurrencyCard'
+
+export const revalidate = 60
 
 const wrapperStyle = {
   display: 'grid',
@@ -9,13 +10,10 @@ const wrapperStyle = {
 }
 
 const fetchTokens = async () => {
+  console.log('fetchTokens')
+
   const response = await fetch(
-    'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=51',
-    {
-      next: {
-        revalidate: 60,
-      },
-    }
+    'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=51'
   )
   const data = await response.json()
 
