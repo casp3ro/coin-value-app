@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import CryptocurrencyCard from '../../components/CryptocurrencyCard/CryptocurrencyCard'
 
 export const revalidate = 60
@@ -21,7 +22,21 @@ const fetchTokens = async () => {
 }
 
 const TokensPage = async () => {
-  const data = await fetchTokens()
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetchTokens()
+      setData(result)
+    }
+
+    fetchData() // Initial fetch
+
+    const intervalId = setInterval(fetchData, 600000) // Re-fetch every 10 minutes (600000 ms)
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId)
+  }, [])
 
   return (
     <>
