@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
 import CryptocurrencyCard from '../../components/CryptocurrencyCard/CryptocurrencyCard'
 
-export const revalidate = 60
+export const revalidate = 30
 
 const wrapperStyle = {
   display: 'grid',
@@ -14,7 +13,10 @@ const fetchTokens = async () => {
   console.log('fetchTokens')
 
   const response = await fetch(
-    'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=51'
+    'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=51',
+    {
+      cache: 'no-store',
+    }
   )
   const data = await response.json()
 
@@ -22,21 +24,7 @@ const fetchTokens = async () => {
 }
 
 const TokensPage = async () => {
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchTokens()
-      setData(result)
-    }
-
-    fetchData() // Initial fetch
-
-    const intervalId = setInterval(fetchData, 600000) // Re-fetch every 10 minutes (600000 ms)
-
-    // Clean up the interval on component unmount
-    return () => clearInterval(intervalId)
-  }, [])
+  const data = await fetchTokens()
 
   return (
     <>
