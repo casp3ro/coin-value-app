@@ -23,9 +23,7 @@ const CryptocurrencyCard = ({
   change,
   sparklines,
 }: CryptocurrencyCardTypes) => {
-  const changeString = change.toString()
-  const changeDeleteLastNumbers = changeString.slice(0, -13)
-  const finalDigit = changeDeleteLastNumbers[0]
+  const changeNumber = Number(change)
 
   return (
     <>
@@ -44,9 +42,9 @@ const CryptocurrencyCard = ({
               <BoxWrapper>
                 <HeadingXS
                   className="percentage"
-                  color={finalDigit === '-' ? '#F93C21' : '#2DBAA1'}
+                  color={changeNumber < 0 ? '#F93C21' : '#2DBAA1'}
                 >
-                  {changeDeleteLastNumbers}%
+                  {changeNumber.toFixed(2)}%
                 </HeadingXS>
               </BoxWrapper>
             </StyledBoxTimeWrapper>

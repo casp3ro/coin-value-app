@@ -13,7 +13,7 @@ const fetchTokens = async () => {
   console.log('fetchTokens')
 
   const response = await fetch(
-    'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=51',
+    'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=75',
     {
       cache: 'no-store',
     }

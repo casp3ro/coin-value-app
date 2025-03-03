@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import IconPrices from '../../assets/icons/prices.svg'
 import IconNft from '../../assets/icons/nft.svg'
