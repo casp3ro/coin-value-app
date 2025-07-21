@@ -71,7 +71,7 @@ const NFTSearch = () => {
   const router = useRouter()
 
   const handleSubmit = () => {
-    const isAddress = ethers.utils.isAddress(address)
+    const isAddress = ethers.isAddress(address)
     if (isAddress) {
       router.push(`nfts/${address}`)
     }
@@ -79,7 +79,7 @@ const NFTSearch = () => {
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(e.target.value)
-    const isAddress = ethers.utils.isAddress(e.target.value)
+    const isAddress = ethers.isAddress(e.target.value)
     if (isAddress) {
       setActive(true)
     } else {

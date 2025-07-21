@@ -4,7 +4,7 @@ const fetchTokens = async () => {
   const res = await fetch(
     'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=75',
     {
-      next: { revalidate: 30 }, // ISR: refresh every 30s in background
+      next: { revalidate: 60 }, // ISR: refresh every 30s in background
     }
   )
   if (!res.ok) throw new Error('Failed to fetch tokens')

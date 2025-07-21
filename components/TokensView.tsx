@@ -21,20 +21,26 @@ export const TokensView = ({ initialTokens }: { initialTokens: Token[] }) => {
   const [tokens, setTokens] = useState(initialTokens)
 
   useEffect(() => {
-    const fetchLiveData = async () => {
+    // Fetch fresh data right away (doesn't wait 30s)
+    const fetchFreshData = async () => {
       try {
         const res = await fetch(
-          'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=75'
+          'https://api.coingecko.com/api/v3/coins/markets?sparkline=true&price_change_percentage=7d&vs_currency=usd&per_page=75',
+          {
+            cache: 'no-store', // bypass ISR and force fresh
+          }
         )
         const data = await res.json()
         setTokens(data)
       } catch (err) {
-        console.error('Client fetch failed', err)
+        console.error('Error fetching fresh tokens:', err)
       }
     }
 
-    // Poll every 60s
-    const interval = setInterval(fetchLiveData, 60000)
+    fetchFreshData()
+
+    // Optionally re-fetch every 30s
+    const interval = setInterval(fetchFreshData, 60000)
     return () => clearInterval(interval)
   }, [])
 

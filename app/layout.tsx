@@ -1,4 +1,4 @@
-import { Kumbh_Sans } from '@next/font/google'
+import { Kumbh_Sans } from 'next/font/google'
 import { Metadata } from 'next'
 import MainContent from '../components/MainContent'
 
