@@ -1,9 +1,7 @@
 import React from 'react'
 
 type Props = {
-  params: {
-    tokenId: string
-  }
+  params: Promise<{ tokenId: string }>
 }
 
 const fetchToken = async (id: string) => {
@@ -16,9 +14,10 @@ const fetchToken = async (id: string) => {
 }
 
 const Home = async ({ params }: Props) => {
-  const data = await fetchToken(params.tokenId)
+  const { tokenId } = await params
+  const data = await fetchToken(tokenId)
   console.log(data)
-  return <div>Token : {params.tokenId}</div>
+  return <div>Token : {tokenId}</div>
 }
 
 export default Home

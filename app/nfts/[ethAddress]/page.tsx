@@ -20,19 +20,17 @@ const fetchNFTs = async (address: string) => {
   return data
 }
 
-type Props = {
-  params: {
-    ethAddress: string
-  }
+interface Props {
+  params: Promise<{ ethAddress: string }>
 }
 
 const NFTOwnerPage = async ({ params }: Props) => {
-  console.log(params)
-  const nftData = await fetchNFTs(params.ethAddress)
+  const { ethAddress } = await params
+  const nftData = await fetchNFTs(ethAddress)
 
   return (
     <>
-      <HeadingL>Nifties of: {params.ethAddress}</HeadingL>
+      <HeadingL>Nifties of: {ethAddress}</HeadingL>
       <Link href="/nfts">
         <HeadingM>Back to searcher</HeadingM>
       </Link>
