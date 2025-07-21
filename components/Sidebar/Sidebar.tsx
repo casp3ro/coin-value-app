@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import IconPrices from '../../assets/icons/prices.svg'
-import IconNft from '../../assets/icons/nft.svg'
+// import IconNft from '../../assets/icons/nft.svg'
 import EthereumBlue from '../../assets/icons/ethereum-blue.svg'
 import Image from 'next/image'
 import SidebarItem from './SidebarItem/SidebarItem'
@@ -25,9 +25,9 @@ const Sidebar = () => {
         Tokens
       </SidebarItem>
 
-      <SidebarItem iconFile={IconNft} to="/nfts">
+      {/* <SidebarItem iconFile={IconNft} to="/nfts">
         NFTs
-      </SidebarItem>
+      </SidebarItem> */}
     </ModuleWrapper>
   )
 }
