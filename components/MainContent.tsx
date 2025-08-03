@@ -23,9 +23,9 @@ export const MainContent = ({ children }: Props) => {
       <StyledComponentsRegistry>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <ResolutionPlaceholder>
+          {/* <ResolutionPlaceholder>
             <p>App only supported on desktop devices</p>
-          </ResolutionPlaceholder>
+          </ResolutionPlaceholder> */}
           <LayoutWrapper>
             <Sidebar />
             <NavContentWrapper>

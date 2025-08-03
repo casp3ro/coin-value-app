@@ -15,9 +15,10 @@ export const ModuleWrapper = styled.div`
     width: 25%;
   }
   @media ${({ theme }) => theme.device.laptopS} {
-    width: 100px;
+    display: none;
   }
-  @media ${({ theme }) => theme.device.tablet} {
+  /* @media ${({ theme }) => theme.device.tablet} {
+    display: none;
     position: fixed;
     z-index: 100;
     height: 72px;
@@ -32,7 +33,7 @@ export const ModuleWrapper = styled.div`
     grid-template-columns: repeat(3, 1fr);
     padding: 0 16px;
     border-radius: 0px;
-  }
+  } */
 `
 
 export const StyledCircleWrapper = styled.div`

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import CryptocurrencyCard from './CryptocurrencyCard/CryptocurrencyCard'
+import styled from 'styled-components'
 
 const wrapperStyle = {
   display: 'grid',
@@ -45,7 +46,7 @@ export const TokensView = ({ initialTokens }: { initialTokens: Token[] }) => {
   }, [])
 
   return (
-    <div style={wrapperStyle}>
+    <Wrapper>
       {tokens.map((token: any) => {
         const name = token.name || ' '
         const icon = token.image || ' '
@@ -63,6 +64,25 @@ export const TokensView = ({ initialTokens }: { initialTokens: Token[] }) => {
           />
         )
       })}
-    </div>
+    </Wrapper>
   )
 }
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media ${({ theme }) => theme.device.laptopM} {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 12px;
+  }
+`
